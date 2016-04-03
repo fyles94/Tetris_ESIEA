@@ -3,8 +3,9 @@ package view;
 import java.awt.Color;
 import javax.swing.JPanel;
 
-public class Case extends JPanel {
-	private static final int WIDTH = 10;
+public class Case extends JPanel
+{
+    private static final int WIDTH = 10;
     private static final int HEIGHT = 10;
     
     public Case()

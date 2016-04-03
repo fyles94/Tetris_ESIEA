@@ -1,35 +1,37 @@
+
 package model;
 
 import java.awt.Color;
 import java.awt.Point;
 import java.util.Random;
 
-public class Piece {
-	public Piece()
+public class Piece
+{
+    public Piece()
     {
         generate();
     }
     
     private boolean[][] matrix;
     
-    private static Point _defaultposition = new Point(0, 0);
+    private static Point defposition = new Point(0, 0);
     public static Point getDefaultPosition()
     {
-        return _defaultposition;
+        return defposition;
     }
     public static void setDefaultPosition(Point Position)
     {
-        _defaultposition = Position;
+    	defposition = Position;
     }
     
-    private Boolean _isFixed = false;
+    private Boolean fixe = false;
     public Boolean isFixed()
     {
-        return _isFixed;
+        return fixe;
     }
     public void fixe()
     {
-        _isFixed = true;
+        fixe = true;
     }
     
     public Point getSize()
@@ -37,21 +39,21 @@ public class Piece {
         return new Point(matrix.length, matrix[0].length);
     }
     
-    private Point _lastposition = null;
-    private Point _position = null;
+    private Point der_position = null;
+    private Point position = null;
     public Point getPosition()
     {
-        return _position;
+        return position;
     }
     private void setPosition(Point Position)
     {
-        _lastposition = _position;
-        _position = Position;
+        der_position = position;
+        position = Position;
     }
     private void cancelPosition()
     {
-        _position = _lastposition;
-        _lastposition = null;
+        position = der_position;
+        der_position = null;
     }
     
     private Color _color;
@@ -65,12 +67,7 @@ public class Piece {
         switch(new Random().nextInt(7))
         {
             case 0:
-                regenerateMatrix(1, 4, false);
-                
-                matrix[0][0] = true;
-                matrix[0][1] = true;
-                matrix[0][2] = true;
-                matrix[0][3] = true;
+                regenerateMatrix(4, 1, true);
                 
                 _color = Color.RED;
                 break;
@@ -83,7 +80,7 @@ public class Piece {
                 matrix[2][0] = true;
                 matrix[2][1] = true;
                 
-                _color = Color.WHITE;
+                _color = Color.BLUE;
                 break;
                 
             case 2:
@@ -152,8 +149,7 @@ public class Piece {
     {
         return matrix[x][y];
     }
-    
-    //<editor-fold desc="Move">
+  
     public void moveLeft()
     {
         setPosition(new Point(
@@ -186,9 +182,7 @@ public class Piece {
     {
         cancelPosition();
     }
-    //</editor-fold>
     
-    //<editor-fold desc="Rotate">
     private boolean isLastRotateLeft = false;
     public void rotateLeft90()
     {

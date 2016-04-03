@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Observable;
+import java.util.Observer;
 
-public class PieceQueue extends Observable{
-public static final int NB_ELEMENTS = 5;
+public class PieceQueue extends Observable
+{
+    public static final int NB_ELEMENTS = 5;
     
     public PieceQueue()
     {
@@ -20,7 +22,7 @@ public static final int NB_ELEMENTS = 5;
     
     public Piece getNext()
     {
-        Piece p = pieces.pop();
+        Piece p = pieces.poll();
         insertNew();
         
         super.setChanged();
@@ -40,7 +42,19 @@ public static final int NB_ELEMENTS = 5;
         pieces.add(p);
         
         super.setChanged();
-        super.notifyObservers(new PieceQueueChangedEventArg(pieces.descendingIterator()));
+        super.notifyObservers(new PieceQueueChangedEventArg(pieces.iterator()));
+    }
+    
+    @Override
+    public void addObserver(Observer o)
+    {
+        super.addObserver(o);
+        
+        super.setChanged();
+        super.notifyObservers(new CurrentPieceChangedEventArg(pieces.peek()));
+        
+        super.setChanged();
+        super.notifyObservers(new PieceQueueChangedEventArg(pieces.iterator()));
     }
     
     //<editor-fold desc="Events">
@@ -70,4 +84,5 @@ public static final int NB_ELEMENTS = 5;
             return pieces;
         }
     }
+    //</editor-fold>
 }

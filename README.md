@@ -8,7 +8,8 @@ Exécution du programme :
 Features utilisées : 
 - Oriented-Object, 
 - Simple,
-- Portable
+- Portable,
+- Platform Independent
 
 Commandes de jeu :
 - Pour bouger la pièce vers la gauche, touche Q

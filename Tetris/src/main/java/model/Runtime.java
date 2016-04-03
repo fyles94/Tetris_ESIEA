@@ -1,14 +1,19 @@
 package model;
 
 import java.awt.Point;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class Runtime implements Runnable {
-	private static final int START_TIME = 1000; // ms
-    private static final int DECREMENT_TIME = 50; // ms
+public class Runtime implements Runnable
+{
+    private static final int START_TIME = 1000;
+    private static final int DECREMENT_TIME = 100;
     
     public Runtime()
     {
-        Piece.setDefaultPosition(new Point(Grid.MAX_W / 2, 0));
+        Piece.setDefaultPosition(new Point(Grid.COL_NUMBERS / 2, 0));
         
         grid = new Grid();
         
@@ -26,6 +31,7 @@ public class Runtime implements Runnable {
     private Piece currentPiece;
     private boolean finished;
     
+
     public void run()
     {
         try
@@ -45,6 +51,7 @@ public class Runtime implements Runnable {
                     currentPiece.cancelLastMove();
                     nextPiece();
                     
+                    // Accelerer le temps
                     time -= DECREMENT_TIME;
                 }
                 
@@ -56,6 +63,7 @@ public class Runtime implements Runnable {
         { }
     }
     
+    //<editor-fold desc="Pause / Resume">
     private boolean pause = false;
     private void ManagePause()
     {
@@ -88,7 +96,6 @@ public class Runtime implements Runnable {
     {
         this.notifyAll();
     }
-    //</editor-fold>
     
     private void nextPiece()
     {
@@ -163,6 +170,7 @@ public class Runtime implements Runnable {
             nextPiece();
         }
     }
+
     public class TerminatedEventArg
     {
         public TerminatedEventArg(int score)

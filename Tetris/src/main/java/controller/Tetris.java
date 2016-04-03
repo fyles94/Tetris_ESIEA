@@ -1,12 +1,19 @@
 package controller;
 
 
-import model.Grid;
-import view.FenetrePrincipale;
 import model.Runtime;
+import view.*;
 
-public class Tetris {
-	public void main(String[] args) {
-		
-	}
+public class Tetris
+{
+
+    public static void main(String[] args)
+    {
+        Runtime runtime = new Runtime();
+        Window fenetre = new Window(runtime);
+        
+        fenetre.setVisible(true);
+        runtime.run();
+    }
+    
 }

@@ -4,6 +4,7 @@ import java.awt.AlphaComposite;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Container;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -19,45 +20,73 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import model.Score.ScoreChangedEventArg;
 
-public class Score extends HiddenPanel implements Observer {
-	
-
-	private static final Color FORE_COLOR = Color.MAGENTA;
-
-	public Score() {
-		super();
-		super.setLayout(new BorderLayout(0, 0));
-		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.BLACK);
+public class Score extends HiddenPanel implements Observer
+{
+    private static final Color FORE_COLOR = Color.WHITE;
     
-		label = new JLabel();
-		label.setAlignmentX(Component.CENTER_ALIGNMENT);
-		label.setFont(new Font(label.getFont().getName(), Font.BOLD, 20));
-		label.setForeground(FORE_COLOR);
-    
-		panel.add(label, BorderLayout.CENTER);
-		this.add(panel, BorderLayout.CENTER);
-    
-    
-    
-		this.setBorder(BorderFactory.createCompoundBorder(
-            new EmptyBorder(10, 10, 0, 10),
-            BorderFactory.createMatteBorder(7, 7, 0, 7, FORE_COLOR)));
-	}
-
-	private JLabel label;
-	private void setScore(int value) {
-		label.setText("Score : " + value);
-	}
-
-	@Override
-	public void update(Observable obs, Object obj) {
-		if(obj instanceof ScoreChangedEventArg) {
-			int score = ((ScoreChangedEventArg)obj).getScore();
+    public Score()
+    {
+        super();
+        super.setLayout(new BorderLayout(0, 0));
         
-			setScore(score);
-		}
-	}
+        JPanel panel = createCenteredPanel(this);
+        
+        scoreLabel = new JLabel();
+        scoreLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        scoreLabel.setFont(new Font(scoreLabel.getFont().getName(), Font.BOLD, 20));
+        scoreLabel.setForeground(FORE_COLOR);
+        
+        createCenteredPanel(panel, BorderLayout.CENTER).add(scoreLabel);
+        
+        nbLabel = new JLabel();
+        nbLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        nbLabel.setFont(new Font(nbLabel.getFont().getName(), Font.BOLD, 15));
+        nbLabel.setForeground(FORE_COLOR);
+        
+        createCenteredPanel(panel, BorderLayout.SOUTH).add(nbLabel);
+        
+        
+        
+        this.setBorder(BorderFactory.createCompoundBorder(
+                new EmptyBorder(10, 10, 0, 10),
+                BorderFactory.createMatteBorder(7, 7, 0, 7, FORE_COLOR)));
+    }
+    private JPanel createCenteredPanel(Container parent)
+    {
+        JPanel panel = new JPanel(new BorderLayout(0, 0));
+        panel.setBackground(Color.BLACK);
+        parent.add(panel, BorderLayout.CENTER);
+        return panel;
+    }
+    private JPanel createCenteredPanel(Container parent, String borderLayout)
+    {
+        JPanel panel = new JPanel();
+        panel.setBackground(Color.BLACK);
+        parent.add(panel, borderLayout);
+        return panel;
+    }
+    
+    private JLabel scoreLabel;
+    private JLabel nbLabel;
+    private void setScore(int value)
+    {
+        scoreLabel.setText("Score : " + value);
+        nbLabel.setText("Ligne : 0");
+    }
+    private void setScore(int value, int nb)
+    {
+        scoreLabel.setText("Score : " + value);
+        nbLabel.setText("Ligne" + (nb > 1 ? "s" : "") + " : " + nb);
+    }
 
+    public void update(Observable obs, Object obj)
+    {
+        if(obj instanceof ScoreChangedEventArg)
+        {
+            ScoreChangedEventArg scoreArg = ((ScoreChangedEventArg)obj);
+            
+            setScore(scoreArg.getScore(), scoreArg.getNb());
+        }
+    }
+    
 }

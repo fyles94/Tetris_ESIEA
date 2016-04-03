@@ -3,7 +3,11 @@ package model;
 import java.awt.Color;
 import java.awt.Point;
 import java.util.Observable;
-
+/***
+ * 
+ * @author IM&MOOROOGEN
+ *
+ */
 public class Grid extends Observable
 {
     public static final int COL_NUMBERS = 15;

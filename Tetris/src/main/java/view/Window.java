@@ -15,7 +15,11 @@ import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import model.Runtime;
-
+/****
+ * 
+ * @author IM&MOOROOGEN
+ *
+ */
 
  public class Window extends JFrame implements KeyListener
 {
@@ -173,12 +177,6 @@ import model.Runtime;
             // Rotate
             case 90: // Z
                 runtime.Rotate();
-                break;
-            
-            // Show/Hide menu
-            case 27: // Escape
-                runtime.Pause();
-                //runtime.Resume();
                 break;
             
             default:

@@ -19,7 +19,11 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import model.Score.ScoreChangedEventArg;
-
+/***
+ * 
+ * @author IM&MOOROOGEN
+ *
+ */
 public class Score extends HiddenPanel implements Observer
 {
     private static final Color FORE_COLOR = Color.WHITE;

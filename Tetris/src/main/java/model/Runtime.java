@@ -5,7 +5,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+/*****
+ * 
+ * @author IM&MOOROOGEN
+ *
+ */
 public class Runtime implements Runnable
 {
     private static final int START_TIME = 1000;

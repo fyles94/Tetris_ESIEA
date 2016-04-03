@@ -1,7 +1,11 @@
 package model;
 
 import java.util.Observable;
-
+/***
+ * 
+ * @author IM&MOOROOGEN
+ *
+ */
 public class Score extends Observable
 {
     public Score()

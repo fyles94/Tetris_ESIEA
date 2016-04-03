@@ -4,7 +4,11 @@ package model;
 import java.awt.Color;
 import java.awt.Point;
 import java.util.Random;
-
+/***
+ * 
+ * @author IM&MOOROOGEN
+ *
+ */
 public class Piece
 {
     public Piece()

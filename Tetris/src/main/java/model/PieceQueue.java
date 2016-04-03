@@ -6,6 +6,12 @@ import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
 
+/***
+ * 
+ * @author IM&MOOROOGEN
+ *
+ */
+
 public class PieceQueue extends Observable
 {
     public static final int NB_ELEMENTS = 5;

@@ -2,7 +2,11 @@ package view;
 
 import java.awt.Color;
 import javax.swing.JPanel;
-
+/***
+ * 
+ * @author IM&MOOROOGEN
+ *
+ */
 public class Case extends JPanel
 {
     private static final int WIDTH = 10;

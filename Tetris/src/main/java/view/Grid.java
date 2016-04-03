@@ -10,6 +10,12 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import model.Piece;
 
+/***
+ * 
+ * @author IM&MOOROOGEN
+ *
+ */
+
 public class Grid extends HiddenPanel implements Observer
 {
     public Grid()
@@ -32,7 +38,7 @@ public class Grid extends HiddenPanel implements Observer
             }
         
         this.setBackground(Color.black);
-        this.setBorder(BorderFactory.createMatteBorder(0, 7, 0, 7, Color.magenta));
+        this.setBorder(BorderFactory.createMatteBorder(0, 7, 0, 7, Color.BLACK));
     }
     private Case[][] cases;
     

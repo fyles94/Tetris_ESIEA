@@ -6,7 +6,11 @@ import java.awt.Point;
 import java.util.Iterator;
 import java.util.Observable;
 import java.util.Observer;
-
+/***
+ * 
+ * @author IM&MOOROOGEN
+ *
+ */
 
 public class PieceQueue extends HiddenPanel implements Observer
 {

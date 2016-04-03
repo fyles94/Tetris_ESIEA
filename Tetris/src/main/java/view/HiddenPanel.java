@@ -3,7 +3,11 @@ package view;
 
 import java.awt.Color;
 import javax.swing.JPanel;
-
+/***
+ * 
+ * @author IM&MOOROOGEN
+ *
+ */
 
 public class HiddenPanel extends JPanel
 {
